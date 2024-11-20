@@ -7,6 +7,10 @@ const Timer = () => {
     sec: 0,
   });
 
+  const clickHandler = (e, field) => {
+    console.log("event", e, "field", field);
+  };
+
   return (
     <div className="container">
       <input
