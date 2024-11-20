@@ -8,7 +8,12 @@ const Timer = () => {
   });
 
   const clickHandler = (e, field) => {
-    console.log("event", e, "field", field);
+    console.log("event", e.target.value, "field", field);
+    setTime((prev) => {
+      let temp = { ...prev };
+      temp[field] = e.target.value;
+      return temp;
+    });
   };
 
   return (
