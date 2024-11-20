@@ -9,9 +9,9 @@ const Timer = () => {
 
   return (
     <div className="container">
-      <input type="text" />
-      <input type="text" />
-      <input type="text" />
+      <input type="text" value={time.hour.toString()} />
+      <input type="text" value={time.min.toString()} />
+      <input type="text" value={time.sec.toString()} />
     </div>
   );
 };
