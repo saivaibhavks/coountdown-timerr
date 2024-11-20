@@ -14,8 +14,16 @@ const Timer = () => {
         value={time.hour.toString()}
         onChange={(e) => clickHandler(e, "hour")}
       />
-      <input type="text" value={time.min.toString()} />
-      <input type="text" value={time.sec.toString()} />
+      <input
+        type="text"
+        value={time.min.toString()}
+        onChange={(e) => clickHandler(e, "min")}
+      />
+      <input
+        type="text"
+        value={time.sec.toString()}
+        onChange={(e) => clickHandler(e, "sec")}
+      />
     </div>
   );
 };
