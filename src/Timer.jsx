@@ -39,6 +39,13 @@ const Timer = () => {
       }, 1000);
     }
   }, [isRunning]);
+
+  const toggle = () => {
+    setIsRunning(!isRunning);
+    if (isRunning) {
+      setIsRunning(false);
+    }
+  };
   return (
     <div className="container">
       <h1>Count down</h1>
@@ -51,9 +58,7 @@ const Timer = () => {
         className="btn-actions"
         style={{ display: "flex", gap: "10px", margin: "20px" }}
       >
-        <button onClick={() => setIsRunning(true)}>
-          {isRunning ? "Pause" : "Start"}
-        </button>
+        <button onClick={toggle}>{isRunning ? "Pause" : "Start"}</button>
         <button>Stop</button>
       </div>
     </div>
