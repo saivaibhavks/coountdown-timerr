@@ -1,10 +1,11 @@
 import { useState } from "react";
+import "./Timer.css";
 
 const Timer = () => {
   const [time, setTime] = useState({
-    hour: 0,
-    min: 0,
-    sec: 0,
+    hour: 23,
+    min: 59,
+    sec: 59,
   });
 
   const clickHandler = (e, field) => {
@@ -18,21 +19,16 @@ const Timer = () => {
 
   return (
     <div className="container">
-      <input
-        type="text"
-        value={time.hour.toString()}
-        onChange={(e) => clickHandler(e, "hour")}
-      />
-      <input
-        type="text"
-        value={time.min.toString()}
-        onChange={(e) => clickHandler(e, "min")}
-      />
-      <input
-        type="text"
-        value={time.sec.toString()}
-        onChange={(e) => clickHandler(e, "sec")}
-      />
+      <h1>Count down</h1>
+      <div className="timer" style={{ display: "flex" }}>
+        <input type="text" value={time.hour} />
+        <input type="text" value={time.min} />
+        <input type="text" value={time.sec} />
+      </div>
+      <div className="btn-actions">
+        <button>Start</button>
+        <button>Stop</button>
+      </div>
     </div>
   );
 };
