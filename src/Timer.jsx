@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import "./Timer.css";
 
 const Timer = () => {
@@ -8,25 +8,37 @@ const Timer = () => {
     sec: 59,
   });
 
-  const clickHandler = (e, field) => {
-    console.log("event", e.target.value, "field", field);
-    setTime((prev) => {
-      let temp = { ...prev };
-      temp[field] = e.target.value;
-      return temp;
-    });
-  };
+  const [isRunning, setIsRunning] = useState(false);
+  const timeInterval = useRef(null);
 
+  useEffect(() => {
+    if (isRunning) {
+      setInterval(() => {
+        setTime(
+          (prev) => {
+            let temp = { ...prev };
+
+            temp.sec--;
+            setTime(temp);
+          },
+          [1000]
+        );
+      });
+    }
+  }, [isRunning]);
   return (
     <div className="container">
       <h1>Count down</h1>
       <div className="timer" style={{ display: "flex" }}>
-        <input type="text" value={time.hour} />
-        <input type="text" value={time.min} />
-        <input type="text" value={time.sec} />
+        <input type="text" value={time.hour.toString()} />
+        <input type="text" value={time.min.toString()} />
+        <input type="text" value={time.sec.toString()} />
       </div>
-      <div className="btn-actions">
-        <button>Start</button>
+      <div
+        className="btn-actions"
+        style={{ display: "flex", gap: "10px", margin: "20px" }}
+      >
+        <button onClick={() => setIsRunning(true)}>Start</button>
         <button>Stop</button>
       </div>
     </div>
